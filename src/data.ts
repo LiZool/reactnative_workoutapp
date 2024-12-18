@@ -3,7 +3,7 @@ import { Meditation } from "./types";
 export const meditations: Meditation[] = [
     {
         id: 1,
-        title: '60 Seconds of Mindfulness',
+        title: '60 Secondssss of Mindfulness',
         duration: 1,
         type: 'audio',
         pro: false,

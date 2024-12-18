@@ -1,6 +1,7 @@
 {
   "name": "reactnat_headspacev1",
   "main": "expo-router/entry",
+  "scheme": "headspace",
   "version": "1.0.0",
   "scripts": {
     "start": "expo start",

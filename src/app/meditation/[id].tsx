@@ -63,13 +63,16 @@ export default function MeditationDetails() {
 
                         {/** Playback indicator **/}
                         <View>
-                            <Slider 
-                                style={{ width: '100%', height: 40 }}
+                            <Slider
+                                style={{width: '100%', height: 40}}
+                                value= {0.5}
+                                onSlidingComplete={(value) => console.log(value)}
                                 minimumValue={0}
                                 maximumValue={1}
-                                minimumTrackTintColor="Lightgray"
-                                maximumTrackTintColor="000000"
-                            />
+                                minimumTrackTintColor="#3A3937"
+                                maximumTrackTintColor="#3A393755"
+                                thumbTintColor="#3A3937"
+                                />
                         </View>
 
                         {/** Times **/}

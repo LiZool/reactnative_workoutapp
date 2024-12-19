@@ -8,12 +8,24 @@ import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Fontisto from '@expo/vector-icons/Fontisto';
 import Slider from '@react-native-community/slider';
+import { useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
+
+import audio from '@assets/meditations/LACKADAISY ELECTRO SWING REMIX  Olive Branch - Sepiatonic.mp3';
 
 export default function MeditationDetails() {
     const { id } = useLocalSearchParams<{ id: string }>();
 
+    const player = useAudioPlayer(audio);
+    const status = useAudioPlayerStatus(player);
+
     const meditation = meditations.find((m) => m.id === Number(id));
 
+    const formatSeconds = (milliseconds: number) => {
+        const minutes = Math.floor(milliseconds / 60000);
+        const seconds = Math.floor((milliseconds % 60000)/ 1000);
+        return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    };
+    
     if (!meditation) {
         return <Text> Meditation not found! </Text>
     }
@@ -47,8 +59,13 @@ export default function MeditationDetails() {
                 </View>
 
                 {/** Play/ pause Button **/}
-                <Pressable className="bg-zinc-800 self-center w-20 aspect-square rounded-full items-center justify-center">
-                    <FontAwesome name="play" size={24} color="snow" />
+                <Pressable 
+                    onPress={() => player.playing ? player.pause() : player.play()}
+                    className="bg-zinc-800 self-center w-20 aspect-square rounded-full items-center justify-center">
+                    
+                    <FontAwesome name={status.playing ? 'pause': 'play'} 
+                                size={24} 
+                                color="snow" />
                 </Pressable>
 
                 {/** Bottom part of the screen **/}
@@ -65,8 +82,8 @@ export default function MeditationDetails() {
                         <View>
                             <Slider
                                 style={{width: '100%', height: 40}}
-                                value= {0.5}
-                                onSlidingComplete={(value) => console.log(value)}
+                                value= {status.currentTime / status.duration }
+                                onSlidingComplete={(value) => player.seekTo(value * status.duration)}
                                 minimumValue={0}
                                 maximumValue={1}
                                 minimumTrackTintColor="#3A3937"
@@ -77,8 +94,8 @@ export default function MeditationDetails() {
 
                         {/** Times **/}
                         <View className="flex-row justify-between">
-                            <Text> 03:24 </Text>
-                            <Text> 13:24 </Text>
+                            <Text> { formatSeconds(status.currentTime) } </Text>
+                            <Text> { formatSeconds(status.duration)} </Text>
                         </View>
                     </View>
                 </View>

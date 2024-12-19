@@ -1,9 +1,9 @@
-import { Meditation } from "./types";
+import { Exercise } from "./types";
 
-export const meditations: Meditation[] = [
+export const exercises: Exercise[] = [
     {
         id: 1,
-        title: '60 Seconds of Mindfulness',
+        title: '60 Seconds of Situps',
         duration: 1,
         type: 'audio',
         pro: false,
@@ -11,7 +11,7 @@ export const meditations: Meditation[] = [
 
     {
         id: 2,
-        title: '5 Minutes of Mindfulness',
+        title: '5 Minutes of Benchpressing',
         duration: 5,
         type: 'audio',
         pro: true,
@@ -19,7 +19,7 @@ export const meditations: Meditation[] = [
 
     {
         id: 3,
-        title: 'Body Scan Meditation',
+        title: 'Weight lifting',
         duration: 10,
         type: 'audio',
         pro: true,
@@ -27,8 +27,8 @@ export const meditations: Meditation[] = [
 
     {
         id: 4,
-        title: 'Loving Kindness Practice',
-        duration: 15,
+        title: '10 mins of squats',
+        duration: 10,
         type: 'audio',
         pro: true,
     },
@@ -43,8 +43,8 @@ export const meditations: Meditation[] = [
 
     {
         id: 6,
-        title: 'Morning Energy Boost',
-        duration: 3,
+        title: '1 min plank',
+        duration: 1,
         type: 'audio',
         pro: true,
     },

@@ -1,4 +1,4 @@
-export type Meditation = {
+export type Exercise = {
     id: number;
     title: string;
     duration: number;

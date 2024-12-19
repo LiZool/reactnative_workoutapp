@@ -1,6 +1,6 @@
 import { Link, router, useLocalSearchParams } from "expo-router";
 import { Text, View, Pressable } from "react-native";
-import { meditations } from "@/data";
+import { exercises } from "@/data";
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
 import Feather from '@expo/vector-icons/Feather';
@@ -9,16 +9,17 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Fontisto from '@expo/vector-icons/Fontisto';
 import Slider from '@react-native-community/slider';
 import { useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
+import AnimatedBackground from "@/components/AnimatedBackground";
 
 import audio from '@assets/meditations/LACKADAISY ELECTRO SWING REMIX  Olive Branch - Sepiatonic.mp3';
 
-export default function MeditationDetails() {
+export default function ExerciseDetails() {
     const { id } = useLocalSearchParams<{ id: string }>();
 
     const player = useAudioPlayer(audio);
     const status = useAudioPlayerStatus(player);
 
-    const meditation = meditations.find((m) => m.id === Number(id));
+    const exercise = exercises.find((m) => m.id === Number(id));
 
     const formatSeconds = (milliseconds: number) => {
         const minutes = Math.floor(milliseconds / 60000);
@@ -26,12 +27,13 @@ export default function MeditationDetails() {
         return `${minutes}:${seconds.toString().padStart(2, '0')}`;
     };
     
-    if (!meditation) {
-        return <Text> Meditation not found! </Text>
+    if (!exercise) {
+        return <Text> Exercise not found! </Text>
     }
 
     return (
-        <SafeAreaView className="bg-orange-400 flex-1 p-2 justify-between">
+        <SafeAreaView className="bg-[#87CEEB] flex-1 p-2 justify-between">
+            <AnimatedBackground />
             <View className="flex-1">
                 {/* Page content */}
                 <View className="flex-1">
@@ -41,7 +43,7 @@ export default function MeditationDetails() {
 
                         <View className="bg-zinc-900 p-2 rounded-md">
                             <Text className="text-zinc-100 font-semibold"> 
-                                Todays Meditation 
+                                Todays Exercise Routine 
                             </Text>
                         </View>
 
@@ -54,7 +56,7 @@ export default function MeditationDetails() {
                     </View>
 
                     <Text className="text-3xl mt-10 text-center text-zinc font-semibold"> 
-                        { meditation?.title }
+                        { exercise?.title }
                     </Text>;
                 </View>
 

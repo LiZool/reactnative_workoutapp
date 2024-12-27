@@ -11,7 +11,7 @@ import Slider from '@react-native-community/slider';
 import { useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
 import AnimatedBackground from "@/components/AnimatedBackground";
 
-import audio from '@assets/meditations/LACKADAISY ELECTRO SWING REMIX  Olive Branch - Sepiatonic.mp3';
+import audio from '@assets/exercises/LACKADAISY ELECTRO SWING REMIX  Olive Branch - Sepiatonic.mp3';
 
 export default function ExerciseDetails() {
     const { id } = useLocalSearchParams<{ id: string }>();

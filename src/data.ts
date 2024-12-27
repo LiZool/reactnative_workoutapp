@@ -19,7 +19,7 @@ export const exercises: Exercise[] = [
 
     {
         id: 3,
-        title: 'Weight lifting',
+        title: '10 mins of Weight lifting',
         duration: 10,
         type: 'audio',
         pro: true,

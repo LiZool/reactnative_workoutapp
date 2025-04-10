@@ -11,15 +11,19 @@ import Slider from '@react-native-community/slider';
 import { useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
 import AnimatedBackground from "@/components/AnimatedBackground";
 
-import audio from '@assets/exercises/LACKADAISY ELECTRO SWING REMIX  Olive Branch - Sepiatonic.mp3';
-
 export default function ExerciseDetails() {
     const { id } = useLocalSearchParams<{ id: string }>();
 
-    const player = useAudioPlayer(audio);
-    const status = useAudioPlayerStatus(player);
 
     const exercise = exercises.find((m) => m.id === Number(id));
+
+    // Create the player from the exercise's audio
+
+    // Now get the status *after* player is defined
+    const player = useAudioPlayer(exercise?.audio ?? null);
+
+    // Now get the status *after* player is defined
+    const status = useAudioPlayerStatus(player);
 
     const formatSeconds = (milliseconds: number) => {
         const minutes = Math.floor(milliseconds / 60000);

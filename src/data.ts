@@ -7,14 +7,16 @@ export const exercises: Exercise[] = [
         duration: 1,
         type: 'audio',
         pro: false,
+        audio: require('@assets/exercises/LACKADAISYELECTROSWING.mp3'),
     },
-
+    
     {
         id: 2,
         title: '5 Minutes of Benchpressing',
         duration: 5,
         type: 'audio',
         pro: true,
+        audio: require('@assets/exercises/ReTRIBENINE.mp3'),
     },
 
     {
@@ -23,6 +25,7 @@ export const exercises: Exercise[] = [
         duration: 10,
         type: 'audio',
         pro: true,
+        audio: require('@assets/exercises/ShinagawaHotel.mp3'),
     },
 
     {
